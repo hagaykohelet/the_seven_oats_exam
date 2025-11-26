@@ -30,7 +30,7 @@ def create_solider(path) -> list[dict]:
         last_name = solider["שם משפחה"]
         gender = solider["מין"]
         city = solider["עיר מגורים"]
-        distance = solider["מרחק מהבסיס"]
+        distance = int(solider["מרחק מהבסיס"])
         if check_personal_id(personal_id):
             obj = Solider(personal_id=personal_id, first_name=first_name, last_name=last_name,
                           gender=gender, city=city, distance=distance)
@@ -40,5 +40,3 @@ def create_solider(path) -> list[dict]:
     return soliders_list
 
 
-# CSV = "../data_solider/hayal_300_no_status.csv"
-# print(create_solider(CSV))
