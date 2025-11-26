@@ -1,21 +1,30 @@
 from fastapi import FastAPI
+import uvicorn
 
 from classes.solider import Solider
-from functions.read_csv import create_solider
-from classes.residence import Residence
-
+from functions.create_soldier_list import create_solider,sort_soldier_by_distance
+from classes.residence import Residence, Room
 
 app = FastAPI()
 
 PATH = "data_solider/hayal_300_no_status.csv"
 
 
-# soliders = create_solider(PATH)
-# resisdence1 =  Residence()
-# for i in range(8):
-#     for solider_l in soliders:
-#         while resisdence1.check_people_in_rooms():
-#             solider = solider_l
-#         resisdence1.people.append(solider_l)
-#
-# אני רוצה להכניס פה רשימה שך 8 אנישם שכל פעם יכנס לדיקט
+@app.get("/assignWithCsv")
+def initial_placemet():
+    soliders = create_solider(PATH)
+    sorted_soldier_list = sort_soldier_by_distance(soliders)
+    residence1 = Residence()
+    for i in range(10):
+        room = Room()
+        for j in range(8):
+            sorted_soldier_list[j].change_status()
+            room.add_people(sorted_soldier_list[j])
+        residence1.add_room(room)
+    return residence1
+
+
+
+
+if __name__ == "__main__":
+    uvicorn.run(app,host="localhost", port=8000)

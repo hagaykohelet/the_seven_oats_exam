@@ -32,11 +32,23 @@ def create_solider(path) -> list[dict]:
         city = solider["עיר מגורים"]
         distance = int(solider["מרחק מהבסיס"])
         if check_personal_id(personal_id):
-            obj = Solider(personal_id=personal_id, first_name=first_name, last_name=last_name,
-                          gender=gender, city=city, distance=distance)
+            obj = Solider(personal_id, first_name, last_name, gender, city, distance)
 
             soliders_list.append(obj)
 
     return soliders_list
+
+
+def sort_soldier_by_distance(soldiers: list) -> list:
+    length = len(soldiers)
+    for i in range(length):
+        swapped = False
+        for j in range(0, length -i-1):
+            if soldiers[j].distance < soldiers[j+1].distance:
+                soldiers[j], soldiers[j+1] = soldiers[j+1],soldiers[j]
+                swapped = True
+        if not swapped:
+            return soldiers
+    return soldiers
 
 
