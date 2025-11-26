@@ -10,5 +10,10 @@ class Residence:
     def __init__(self):
         self.room = []
 
-    def add_room(self, room: Room):
+    def add_room(self, room):
         self.room.append(room)
+
+
+
+
+
