@@ -13,3 +13,7 @@ class Solider(BaseModel):
 
     def change_status(self):
         self.placement_status = "assigned to residence"
+
+
+
+
