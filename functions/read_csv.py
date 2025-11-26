@@ -40,5 +40,5 @@ def create_solider(path) -> list[dict]:
     return soliders_list
 
 
-CSV = "../data_solider/hayal_300_no_status.csv"
-print(create_solider(CSV))
+# CSV = "../data_solider/hayal_300_no_status.csv"
+# print(create_solider(CSV))
